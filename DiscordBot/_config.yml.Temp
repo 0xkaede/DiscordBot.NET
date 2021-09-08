@@ -1,0 +1,4 @@
+﻿prefix: '!'
+discordtoken: 'TokenHere'
+
+//remove the .Temp of the end of _config.yml after remove this line of code :)
