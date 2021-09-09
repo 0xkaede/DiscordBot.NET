@@ -32,7 +32,7 @@ namespace DiscordBot.Services
         {
             var msg = arg as SocketUserMessage;
 
-            if (msg.Author.IsBot) return;
+            //if (msg.Author.IsBot) return;
             var context = new SocketCommandContext(_discord, msg);
 
             int pos = 0;
@@ -55,6 +55,7 @@ namespace DiscordBot.Services
 
         private Task OnReady()
         {
+            Random random= new Random();
             var TOKEN = _config["discordtoken"].GetLast(18);
             Logs.Info($"Discord bot created in Discord.NET, by 0xkaede");
             Logs.Info($"Connected as username: {_discord.CurrentUser.Username}#{_discord.CurrentUser.Discriminator}");
@@ -64,14 +65,9 @@ namespace DiscordBot.Services
 
             foreach (var guild in _discord.Guilds)
             {
-                var guildName = guild.Name;
-                //string invite = guild.GetInvitesAsync().ToString();
-                //foreach (var invites in invite)
-                //{
-                //    Console.WriteLine(invites);
-                //}
-                //Console.WriteLine(guildName);
-                //Console.WriteLine(guildName);
+                string[] guildinfo = { guild.Name, guild.DefaultChannel.CreateInviteAsync().Result.ToString() }; 
+
+                Logs.Guilds($"{guildinfo[0]} | {guildinfo[1]}");
             }
             //Console.WriteLine($"Connected as {_discord.CurrentUser.Username}#{_discord.CurrentUser.Discriminator}");
             return Task.CompletedTask;

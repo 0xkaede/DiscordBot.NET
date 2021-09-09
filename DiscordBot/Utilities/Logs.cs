@@ -49,6 +49,16 @@ namespace DiscordBot.Utilities
             Console.WriteLine(a);
             return true;
         }
+
+        public static bool Guilds (string a)
+        {
+            Defualt("[");
+            Console.ForegroundColor = ConsoleColor.Magenta;
+            Defualt("Guild!");
+            Defualt("] ");
+            Console.WriteLine(a);
+            return true;
+        }
     }
 
 
