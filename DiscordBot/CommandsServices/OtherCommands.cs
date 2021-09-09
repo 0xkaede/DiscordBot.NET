@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DiscordBot.Moduels
+namespace DiscordBot.CommandsServices
 {
     public class OtherCommands : ModuleBase
     {
@@ -15,9 +15,5 @@ namespace DiscordBot.Moduels
         {
             await Context.Channel.SendMessageAsync("Pong! (Discord.NET Test)");
         }
-
-        
-
-        
     }
 }

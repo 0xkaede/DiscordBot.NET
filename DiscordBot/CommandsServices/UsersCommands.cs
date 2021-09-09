@@ -6,11 +6,11 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DiscordBot.Moduels
+namespace DiscordBot.CommandsServices
 {
     public class UsersCommands : ModuleBase
     {
-        [Command("info")]
+        [Command("userinfo")]
         public async Task info(SocketGuildUser user = null)
         {
             string uRoles = "";
@@ -36,6 +36,7 @@ namespace DiscordBot.Moduels
                     .AddField("Created at: ", Context.User.CreatedAt.ToString("ddd, MMM dd, yyyy"), true)
                     .AddField("Joined on: ", (Context.User as SocketGuildUser).JoinedAt.Value.ToString("ddd, MMM dd, yyyy"), true)
                     .AddField($"Roles [{rolesnum}]: ", uRoles, false)
+
                     .WithCurrentTimestamp();
 
                 var result = builder.Build();
@@ -62,6 +63,7 @@ namespace DiscordBot.Moduels
 
                     .AddField("Created at: ", user.CreatedAt.ToString("ddd, MMM dd, yyyy"), true)
                     .AddField("Joined on: ", user.JoinedAt.Value.ToString("ddd, MMM dd, yyyy"), true)
+                    .AddField($"Roles [{rolesnum}]: ", uRoles, false)
                     .AddField($"Roles [{rolesnum}]: ", uRoles, false)
                     .WithCurrentTimestamp();
 

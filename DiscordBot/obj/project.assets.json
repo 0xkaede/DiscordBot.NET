@@ -1791,11 +1791,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\User\\source\\repos\\DiscordBot\\DiscordBot\\DiscordBot.csproj",
+      "projectUniqueName": "C:\\Users\\User\\source\\repos\\DiscordBot\\DiscordBot.NET\\DiscordBot\\DiscordBot.csproj",
       "projectName": "DiscordBot",
-      "projectPath": "C:\\Users\\User\\source\\repos\\DiscordBot\\DiscordBot\\DiscordBot.csproj",
+      "projectPath": "C:\\Users\\User\\source\\repos\\DiscordBot\\DiscordBot.NET\\DiscordBot\\DiscordBot.csproj",
       "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\User\\source\\repos\\DiscordBot\\DiscordBot\\obj\\",
+      "outputPath": "C:\\Users\\User\\source\\repos\\DiscordBot\\DiscordBot.NET\\DiscordBot\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"

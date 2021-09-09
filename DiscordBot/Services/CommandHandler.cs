@@ -1,8 +1,10 @@
 ﻿using Discord.Commands;
 using Discord.WebSocket;
+using DiscordBot.Utilities;
 using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -36,6 +38,7 @@ namespace DiscordBot.Services
             int pos = 0;
             if(msg.HasStringPrefix(_config["prefix"], ref pos) || msg.HasMentionPrefix(_discord.CurrentUser, ref pos))
             {
+                var usercommand = context.User.Username + "#" + context.User.Discriminator;
                 var result = await _commands.ExecuteAsync(context, pos, _prividor);
                 if (!result.IsSuccess)
                 {
@@ -43,17 +46,34 @@ namespace DiscordBot.Services
 
                     await context.Channel.SendMessageAsync($"The following error occured: \n {reason}");
 
-                    Console.WriteLine(reason);
+                    Logs.Error($"The following error occured from an executed command from {usercommand}: {reason}");
                 }
-
-
+                Logs.CommandSent($"{usercommand}: Just executed an command");
             }
 
         }
 
         private Task OnReady()
         {
-            Console.WriteLine($"Connected as {_discord.CurrentUser.Username}#{_discord.CurrentUser.Discriminator}");
+            var TOKEN = _config["discordtoken"].GetLast(18);
+            Logs.Info($"Discord bot created in Discord.NET, by 0xkaede");
+            Logs.Info($"Connected as username: {_discord.CurrentUser.Username}#{_discord.CurrentUser.Discriminator}");
+            Logs.Info($"Connected as ID: {_discord.CurrentUser.Id}");
+            Logs.Info($"Bot using Token that ends with: {TOKEN}");
+            Logs.Info($"Bot is currently in {_discord.Guilds.Count} Guild");
+
+            foreach (var guild in _discord.Guilds)
+            {
+                var guildName = guild.Name;
+                //string invite = guild.GetInvitesAsync().ToString();
+                //foreach (var invites in invite)
+                //{
+                //    Console.WriteLine(invites);
+                //}
+                //Console.WriteLine(guildName);
+                //Console.WriteLine(guildName);
+            }
+            //Console.WriteLine($"Connected as {_discord.CurrentUser.Username}#{_discord.CurrentUser.Discriminator}");
             return Task.CompletedTask;
         }
     }
