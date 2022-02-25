@@ -1,4 +1,4 @@
-﻿prefix: '!'
-discordtoken: 'TokenHere'
-
-//remove the .Temp of the end of _config.yml after remove this line of code :)
+﻿prefix: 'PREFIXHERE'
+discordtoken: 'TOKENHERE'
+ApexApiKey: 'APEXAPIKEYHERE' \\Get apex api key from https://apexlegendsapi.com/documentation.php
+FortniteApiKey: 'FORTNITEAPIKEYHERE' \\Get fortnite api key from https://dash.fortnite-api.com/account

@@ -5,7 +5,7 @@ namespace DiscordBot
 {
     class Program
     {
-        public static async Task Main(string[] args) 
+        public static async Task Main(string[] args)
             => await Startup.RunAsync(args);
     }
 }

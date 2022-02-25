@@ -3,9 +3,8 @@ using Discord.Commands;
 using Discord.WebSocket;
 using Microsoft.Extensions.Configuration;
 using System;
-using System.Collections.Generic;
+using System.IO;
 using System.Reflection;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace DiscordBot.Services
@@ -34,9 +33,28 @@ namespace DiscordBot.Services
                 return;
             }
 
+            string ApexApiKey = _config["ApexApiKey"];
+            if (string.IsNullOrWhiteSpace(ApexApiKey))
+            {
+                Console.WriteLine("Please enter in your ApexApiKey");
+                return;
+            }
+
+            string FortniteApiKey = _config["FortniteApiKey"];
+            if (string.IsNullOrWhiteSpace(FortniteApiKey))
+            {
+                Console.WriteLine("Please enter in your FortniteApiKey");
+                return;
+            }
+
+            //Tempo
+            File.WriteAllText(Path.GetTempPath() + "SALKDH891.KAEDE", ApexApiKey);
+            File.WriteAllText(Path.GetTempPath() + "SALKDH892.KAEDE", FortniteApiKey);
+
             await _discord.LoginAsync(TokenType.Bot, token);
             await _discord.StartAsync();
 
+            await _discord.SetActivityAsync(new Game("Created by 0xkaede", ActivityType.CustomStatus, ActivityProperties.None)).ConfigureAwait(false);
             await _commands.AddModulesAsync(Assembly.GetExecutingAssembly(), _prividor);
         }
     }

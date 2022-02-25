@@ -40,6 +40,16 @@ namespace DiscordBot.Utilities
             return true;
         }
 
+        public static bool ReqAPI(string a)
+        {
+            Defualt("[");
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Defualt("Req!");
+            Defualt("] ");
+            Console.WriteLine(a);
+            return true;
+        }
+
         public static bool Error(string a)
         {
             Defualt("[");
@@ -50,7 +60,7 @@ namespace DiscordBot.Utilities
             return true;
         }
 
-        public static bool Guilds (string a)
+        public static bool Guilds(string a)
         {
             Defualt("[");
             Console.ForegroundColor = ConsoleColor.Magenta;
@@ -60,6 +70,4 @@ namespace DiscordBot.Utilities
             return true;
         }
     }
-
-
 }

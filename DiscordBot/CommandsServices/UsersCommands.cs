@@ -1,6 +1,7 @@
 ﻿using Discord;
 using Discord.Commands;
 using Discord.WebSocket;
+using DiscordBot.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -57,7 +58,7 @@ namespace DiscordBot.CommandsServices
 
                 var builder = new EmbedBuilder()
                     .WithAuthor($"{user.Username}#{user.Discriminator}", user.GetAvatarUrl())
-                    .WithThumbnailUrl(user.GetAvatarUrl() ?? user.GetDefaultAvatarUrl())    
+                    .WithThumbnailUrl(user.GetAvatarUrl() ?? user.GetDefaultAvatarUrl())
                     .WithDescription($"Here some information about <@{user.Id}>")
                     .WithColor(new Color(254, 130, 153))
 
@@ -72,9 +73,40 @@ namespace DiscordBot.CommandsServices
 
                 await Context.Channel.SendMessageAsync(null, false, result);
             }
-            
+
 
             rolesnum = 0;
+        }
+
+        [Command("avatar")]
+        public async Task avatar(SocketGuildUser user = null)
+        {
+            if (user == null)
+            {
+                var builder = new EmbedBuilder()
+                    .WithAuthor($"{Context.User.Username}#{Context.User.Discriminator}", Context.User.GetAvatarUrl())
+                    .WithDescription($"Here's <@{Context.User.Id}> avatar")
+                    .WithImageUrl(Context.User.GetAvatarUrl().Replace("128", "512") ?? Context.User.GetDefaultAvatarUrl())
+                    .WithColor(new Color(254, 130, 153))
+                    .WithCurrentTimestamp();
+
+                var result = builder.Build();
+
+                await Context.Channel.SendMessageAsync(null, false, result);
+            }
+            else
+            {
+                var builder = new EmbedBuilder()
+                    .WithAuthor($"{user.Username}#{user.Discriminator}", user.GetAvatarUrl())
+                    .WithThumbnailUrl(user.GetAvatarUrl().Replace("128", "1080") ?? user.GetDefaultAvatarUrl())
+                    .WithDescription($"Here's <@{user.Id}> avatar")
+                    .WithColor(new Color(254, 130, 153))
+                    .WithCurrentTimestamp();
+
+                var result = builder.Build();
+
+                await Context.Channel.SendMessageAsync(null, false, result);
+            }
         }
     }
 }
